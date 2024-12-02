@@ -5,3 +5,8 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+/* Si el fondo blanco sigue apareciendo en el margen, añade un fondo adicional para el área fuera del navbar */
+body {
+    background-color: #08090A; /* Para asegurar que el fondo del body también sea oscuro */
+
+}

@@ -1,0 +1,11 @@
+/* Cambiar el selector para apuntar a la clase 'proyectos-section' */
+.proyectos-section h2 {
+    font-size: 24px;
+    margin: 0;
+    transition: transform 0.3s ease;
+    color: #DA4167; 
+}
+
+.proyectos-section h2:hover {
+    transform: scale(1.1);
+}

@@ -1,0 +1,10 @@
+.contacto-section h2 {
+    font-size: 24px;
+    margin: 0;
+    transition: transform 0.3s ease;
+    color: #DA4167; 
+}
+
+.contacto-section h2:hover {
+    transform: scale(1.1);
+}

@@ -1,26 +1,32 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import ScrollToTop from "../component/scrollToTop";
+import { Educacion } from "../component/educacion";
+import { Skills } from "../component/skills";
+import { Proyectos } from "../component/proyectos";
+import { Contacto } from "../component/contacto";
 
+//Aquí es donde se muestran las secciones del portafolio como Educación, Skills, Proyectos, y Contacto.
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
-		</div>
+		<ScrollToTop>  {/* Envuelve Home.js con ScrollToTop */}
+            <div className="home"> {/* Secciones de la página con id que coincida con los valores de los Link del navbar.js */}
+                <section id="educacion">
+                    <Educacion />
+                </section>
+                <section id="skills">
+                    <Skills />
+                </section>
+                <section id="proyectos">
+                    <Proyectos />
+                </section>
+                <section id="contacto">
+                    <Contacto />
+                </section>
+            </div>
+        </ScrollToTop>
 	);
 };
