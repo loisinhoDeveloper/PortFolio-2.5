@@ -8,6 +8,9 @@ import { Proyectos } from "../component/proyectos";
 import { Contacto } from "../component/contacto";
 import { FaGithub, FaLinkedin } from "react-icons/fa";  // instalamos npm i @flaticon/flaticon-uicons. Usamos React Icons para los íconos.
 import avatar from "../../img/avatar.png";
+import { gsap } from "gsap"; //librería de JavaScript que permite o animar textos, imágenes, secciones completas. Primero instalas npm install gsap
+
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -21,9 +24,9 @@ export const Home = () => {
             <h1>¡Hola! Soy Lois</h1>
             <h2><span>Desarrollador Jr Full Stack</span></h2>
             <p>
-              Con habilidades y conocimientos en HTML, CSS, Javascript, ReactJS, Python, Flask, SQL, APIs, Stripe. 
+              Con habilidades en HTML, CSS y JavaScript, así como en frameworks como React. 
               Siempre en busca de nuevos desafíos y aprendizajes. 
-              Entusiasta y comprometido, con una gran inclinación hacia la investigación y el aprendizaje constante. 
+              Entusiasta y comprometido, colaboro eficazmente en equipo y con gran inclinación hacia la investigación y el aprendizaje constante. 
             </p>
             <p>
               Además <span>Profesor</span> con más de 5 años gestionando proyectos de robótica y programación para niños. 
