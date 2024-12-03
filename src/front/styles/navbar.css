@@ -13,9 +13,10 @@
 
 /* Estilo para el título */
 .navbar h1 {
-  font-size: 24px;           /* Tamaño del texto */
   margin: 0;                 /* Quitar márgenes por defecto */
   transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-size: 33.6px;                 /* Tamaño del texto */
 }
 
 /* Hacer que el .rr de lois.rr tenga color #DA4167 y aplicar el difuminado */

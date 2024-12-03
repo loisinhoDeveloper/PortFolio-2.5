@@ -10,9 +10,10 @@ export const Navbar = () => {
 		<nav className="navbar">
 			{/* utilizando Link con # para navegar entre las secciones de la misma página, ya que (#) permitirá que el navegador haga scroll hacia las secciones correspondientes dentro del mismo documento. */}
 			<Link to="/" className="navbar-link">
-  				<h1>Portafolio lois<span>.rr</span></h1>
+  				<h1>rodilla<span>.dev</span></h1>
 			</Link>
 			<div className="linksHome">
+				<Link to="#home">Home</Link> 
                 <Link to="#educacion">Educación</Link> 
                 <Link to="#skills">Skills</Link>
                 <Link to="#proyectos">Proyectos</Link>
