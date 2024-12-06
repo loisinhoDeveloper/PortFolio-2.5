@@ -1,76 +1,136 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap"; //librería de JavaScript que permite o animar textos, imágenes, secciones completas. Primero instalas npm install gsap
-import "../../styles/educacion.css";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import Lottie from 'lottie-react';
-import animationData from "../../../assets/iconos/educacionPortFolio.json"; //icono animado.json
-
+import animationData from "../../../assets/iconos/educacionPortFolio.json";
+import "../../styles/educacion.css";
 
 export const Educacion = () => {
-    //useRef: Crea referencias para elementos HTML. Es decir, le decimos a GSAP qué elemento queremos animar.
-  const refSection = useRef(null); // Referencia para toda la sección
-  const refTitulo = useRef(null); // Referencia para el título
-  const refContenido = useRef(null); // Referencia para el parrafo (contenido)
+  const refSection = useRef(null);
+  const refTitulo = useRef(null);
+  const refContenido = useRef(null);
+
+  const [activeInfo, setActiveInfo] = useState(null);
 
   useEffect(() => {
-    // Funciona cuando el componente educacion aparece en la pantalla
+    // Animación inicial del título
     gsap.from(refTitulo.current, {
-      opacity: 0, //título empieza transparente
-      y: -50, // Aparece desde arriba (50px hacia arriba).
-      duration: 1, // Tarda 1 segundo.
-      ease: "power2.out", // animación suave.
+      opacity: 0,
+      y: -50,
+      duration: 1,
+      ease: "power2.out",
     });
 
-    // Animación para el contenido de los cursos
-    gsap.from(refContenido.current.children, { //aplicar animaciones a todos los elementos hijos del contenedor referenciado (refContenido).
-    //al poner ".children", cada curso aparece con su propio movimiento, lo cual es más dinámico y atractivo.
+    // Animación inicial del contenido
+    gsap.from(refContenido.current.children, {
       opacity: 0,
-      y: 50, // Aparece desde abajo (50 px)
-      stagger: 0.3, // Cada hijo (curso) aparezca con un retraso de 3 s
-      duration: 1, //cada animación 1 segundo.
+      y: 50,
+      stagger: 0.3,
+      duration: 1,
       ease: "power2.out",
     });
   }, []);
 
-  const handleMouseEnter = () => {
-    // Efecto interactivo al pasar el ratón por el título
-    gsap.to(refTitulo.current, {
-      scale: 1.1, //titulo se agranda un 10%
-      color: "white", // Cambia el color
-      duration: 0.3,
-      ease: "power1.inOut",
+  const handleCircleHover = (index) => {
+    setActiveInfo(index);
+    // Animación para mostrar el componente
+    gsap.to(`.timeline-component-${index}`, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
     });
   };
 
-  const handleMouseLeave = () => {
-    //  Al quitar el ratón
-    gsap.to(refTitulo.current, {
-      scale: 1,
-      color: "#DA4167", // Color original
+  const handleCircleLeave = () => {
+    setActiveInfo(null);
+    // Animación para ocultar el componente
+    gsap.to(".timeline-component", {
+      opacity: 0,
+      y: 50,
       duration: 0.3,
-      ease: "power1.inOut",
+      ease: "power2.out",
     });
   };
 
   return (
-    <section ref={refSection} id="educacion" className="educacion-section">  {/* El título (h2) se desliza desde arriba con un efecto de entrada suave. */}
-      <h2 ref={refTitulo} 
-        ////Detectan cuando el ratón pasa por encima o no del título para aplicar las animaciones.
-        onMouseEnter={handleMouseEnter} 
-        onMouseLeave={handleMouseLeave}
+    <section ref={refSection} id="educacion" className="educacion-section">
+      <h2
+        ref={refTitulo}
+        onMouseEnter={() => gsap.to(refTitulo.current, { scale: 1.2, duration: 0.3 })}
+        onMouseLeave={() => gsap.to(refTitulo.current, { scale: 1, duration: 0.3 })}
       >
-         <Lottie animationData={animationData} style={{ width: "70px", height: "90px" }} // Tamaño ajustado de la animación />
-        /> 
+        <Lottie animationData={animationData} style={{ width: "70px", height: "90px" }} />
         Educación
       </h2>
-      <div ref={refContenido} className="educacion-content">
-        <h3> 02/2024–09/2024 Bootcamp Full Stack Developer </h3>
-        <p> </p>
-        <h3> 11/2023-01/2024. Formador de formadores E-learning </h3>
-        <p> </p>
-        <h3>05/2020-01/2021. Curso Oficial de Coordinación de Tiempo Libre. </h3>
-        <p> </p>
-        <h3>09/2010–09/2014. Grado en Educación Infantil por la USC. </h3>
-        <p> </p>
+      <div ref={refContenido} className="timeline">
+        {/* Línea central */}
+        <div className="timeline-line"></div>
+
+        {/* Hito 1 */}
+        <div
+          className="timeline-middle"
+          onMouseEnter={() => handleCircleHover(1)}
+          onMouseLeave={handleCircleLeave}
+        >
+          <div className="timeline-circle"></div>
+        </div>
+        {activeInfo === 1 && (
+          <div className="timeline-component timeline-left timeline-component-1">
+            <h3>Bootcamp Full Stack Developer</h3>
+            <p>Septiembre 2024</p>
+          </div>
+        )}
+
+        <div className="timeline-line"></div>
+
+        {/* Hito 2 */}
+        <div
+          className="timeline-middle"
+          onMouseEnter={() => handleCircleHover(2)}
+          onMouseLeave={handleCircleLeave}
+        >
+          <div className="timeline-circle"></div>
+        </div>
+        {activeInfo === 2 && (
+          <div className="timeline-component timeline-right timeline-component-2">
+            <h3>Formador de Formadores E-learning</h3>
+            <p>Enero 2024</p>
+          </div>
+        )}
+
+        <div className="timeline-line"></div>
+
+        {/* Hito 3 */}
+        <div
+          className="timeline-middle"
+          onMouseEnter={() => handleCircleHover(3)}
+          onMouseLeave={handleCircleLeave}
+        >
+          <div className="timeline-circle"></div>
+        </div>
+        {activeInfo === 3 && (
+          <div className="timeline-component timeline-left-2 timeline-component-3">
+            <h3>Curso Oficial de Coordinación de Tiempo Libre</h3>
+            <p>Enero 2021</p>
+          </div>
+        )}
+
+        <div className="timeline-line"></div>
+
+        {/* Hito 4 */}
+        <div
+          className="timeline-middle"
+          onMouseEnter={() => handleCircleHover(4)}
+          onMouseLeave={handleCircleLeave}
+        >
+          <div className="timeline-circle"></div>
+        </div>
+        {activeInfo === 4 && (
+          <div className="timeline-component timeline-right-2 timeline-component-4">
+            <h3>Grado en Educación Infantil</h3>
+            <p>Septiembre 2014 - USC</p>
+          </div>
+        )}
       </div>
     </section>
   );
