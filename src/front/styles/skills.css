@@ -1,8 +1,25 @@
+.skills-section {
+  font-family: 'Poppins', sans-serif;
+  padding: 50px 20px;
+  background-color: #08090A;
+  color: #DA4167;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 60vh;
+}
+
+
 .skills-section h2 {
-    font-size: 24px;
-    margin: 0;
-    transition: transform 0.3s ease;
-    color: #DA4167; 
+  font-size: 76.8px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .skills-section h2:hover {

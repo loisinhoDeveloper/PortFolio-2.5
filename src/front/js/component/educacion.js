@@ -54,11 +54,7 @@ export const Educacion = () => {
 
   return (
     <section ref={refSection} id="educacion" className="educacion-section">
-      <h2
-        ref={refTitulo}
-        onMouseEnter={() => gsap.to(refTitulo.current, { scale: 1.2, duration: 0.3 })}
-        onMouseLeave={() => gsap.to(refTitulo.current, { scale: 1, duration: 0.3 })}
-      >
+      <h2 ref={refTitulo} onMouseEnter={() => gsap.to(refTitulo.current, { scale: 1.2, duration: 0.3 })} onMouseLeave={() => gsap.to(refTitulo.current, { scale: 1, duration: 0.3 })}>
         <Lottie animationData={animationData} style={{ width: "70px", height: "90px" }} />
         Educación
       </h2>
