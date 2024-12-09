@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import "../../styles/proyectos.css";
 import Lottie from 'lottie-react';
-import animacionProyecto from "../../../assets/iconos/animacionProyecto.json";
+import animacionProyecto from "../../../assets/iconos/repositorio.json";
 import { gsap } from "gsap";
 import veteranos from "../../../front/img/valdovinoVeteranos.jpg";
 
